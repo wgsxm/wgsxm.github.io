@@ -8,6 +8,4 @@ build:
   list: never
   publishResources: false
   render: never
-title: Blog
-view: article-grid
 ---

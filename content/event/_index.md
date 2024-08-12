@@ -1,4 +1,15 @@
 ---
+cascade:
+- build:
+    list: local
+    publishResources: false
+    render: never
+
+build:
+  list: never
+  publishResources: false
+  render: never
+
 title: Recent & Upcoming Talks
 cms_exclude: true
 #url: talk
