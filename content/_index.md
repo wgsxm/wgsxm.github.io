@@ -67,7 +67,19 @@ sections:
         exclude_featured: false
     design:
       view: citation
+      
 
+  - block: resume-experience
+    content:
+      # The user's folder name in `content/authors/`
+      username: admin
+    design:
+      # Hugo date format
+      date_format: 'January 2006'
+      # Education or Experience section first?
+      is_education_first: false
+      spacing:
+        padding: [0, 0, 0, 0]
 
   - block: collection
     content:
@@ -95,19 +107,10 @@ sections:
       # Choose a layout view
       view: community/my-date-title-summary
       # Reduce spacing
-      spacing:
-        padding: [0, 0, 0, 0]
+      # spacing:
+      #   padding: [0, 0, 0, 0]
 
 
-  - block: my-resume-experience
-    content:
-      # The user's folder name in `content/authors/`
-      username: admin
-    design:
-      # Hugo date format
-      date_format: 'January 2006'
-      # Education or Experience section first?
-      is_education_first: false
       
 
   ###################################################################
