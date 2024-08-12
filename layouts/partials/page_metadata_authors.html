@@ -1,0 +1,71 @@
+{{/* Display author list. */}}
+
+{{- $taxonomy := "authors" }}
+{{ if .Param $taxonomy }}
+  {{ range $index, $value := (.GetTerms $taxonomy) }}
+    {{- /* Highlight the author's name? */ -}}
+    {{- $highlight_name := .Page.Params.highlight_name | default false -}}
+
+    {{- if gt $index 0 }}, {{ end -}}
+    <span {{ if $highlight_name }}class="font-bold"{{end}}>
+      {{/* Effectively check the page's `_build` option as `_build` is not exposed in Hugo's Page object. */}}
+      {{- if .RelPermalink -}}
+        <a href="{{.RelPermalink}}">{{.LinkTitle}}</a>
+      {{- else -}}
+        {{ .LinkTitle }}
+      {{- end -}}
+    </span>
+    {{- with $.Params.author_notes -}}
+      {{- with (index . $index) -}}
+      <style>
+
+        .author-notes {
+            position: relative;
+            color: #007bff;
+            font-size: 1.2em;
+            margin-left: 5px;
+            margin-left: -2px; 
+            margin-right: -2px;
+            cursor: help;
+        }
+
+        .author-notes::after {
+            content: attr(data-title);
+            position: absolute;
+            bottom: 150%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #333;
+            color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            white-space: nowrap;
+            font-size: 0.9em;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            z-index: 1000;
+        }
+
+        .author-notes::before {
+            content: '';
+            opacity: 0;
+            position: absolute;
+            bottom: 90%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+        .author-notes:hover::after,
+        .author-notes:hover::before {
+            opacity: 1;
+        }
+    </style>
+       <a class="author-notes" data-title="{{.}}">*</a>
+        <!-- <i class="author-notes fas fa-info-circle" data-toggle="tooltip" title="{{.}}"></i> -->
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}

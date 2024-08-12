@@ -20,7 +20,7 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Undergraduate Student
+# role: Undergraduate Student
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
@@ -85,6 +85,7 @@ education:
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
       - lorem ipsum dolor sit amet, consectetur adipiscing elit
+
 work:
   - position: Director of Cloud Infrastructure
     company_name: GenCoin
@@ -161,7 +162,6 @@ awards:
     certificate_url: https://cpho.pku.edu.cn/info/1075/1220.htm
     date: '2020-11-15'
     awarder: Chinese Physical Society
-    icon: "custom/cpho"
 ---
 
 ## About Me

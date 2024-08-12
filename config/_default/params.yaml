@@ -40,7 +40,7 @@ header:
 # Site footer
 footer:
   copyright:
-    notice: '© {year} | Yuchen Lin. This work is licensed under {license}'
+    notice: 'Lastet Update: {month} {day}, {year} | Yuchen Lin'
     license:
       enable: true
       allow_derivatives: false
