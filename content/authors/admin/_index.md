@@ -31,7 +31,7 @@ organizations:
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
 profiles:
   - icon: at-symbol
-    url: 'linyuchen@stu.pku.edu.cn'
+    url: 'mailto:linyuchen@stu.pku.edu.cn'
     label: E-mail Me
   # - icon: brands/x
   #   url: https://twitter.com/GetResearchDev
