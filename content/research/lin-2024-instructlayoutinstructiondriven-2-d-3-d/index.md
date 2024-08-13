@@ -14,6 +14,8 @@ date: '2024-01-01'
 publishDate: '2024-08-12T19:03:56.960191Z'
 publication_types:
 - manuscript
+publication: Preprint
+publication_short: ArXiv
 
 url_pdf: https://arxiv.org/pdf/2407.07580
 
