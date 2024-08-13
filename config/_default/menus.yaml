@@ -11,7 +11,7 @@ main:
     url: /research/
     weight: 2
   - name: CV
-    url: /utils/yuchen_lin_s_cv.pdf
+    url: /utils/cv.pdf
     weight: 3
   # - name: Blog
   #   url: /blog

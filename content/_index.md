@@ -17,7 +17,7 @@ sections:
       # Show a call-to-action button under your biography? (optional)
       button:
         text: Download CV
-        url: utils/yuchen_lin_s_cv.pdf
+        url: utils/cv.pdf
     design:
       css_class: white
       background:
