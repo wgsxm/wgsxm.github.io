@@ -61,8 +61,8 @@ sections:
       title: Research
       text: |-
         <div style="font-family: 'Times New Roman', Times, serif; font-size: 20px; ">
-        My research interests lie in 3D computer vision and multi-modal learning,
-        especially in the context of scene understanding and generation.
+        My research interests lie in computer vision and multi-modal learning,
+        especially in the context of 3D scene understanding and generation.
         I have worked on several projects about 3D semantic learning, static and dynamic scene reconstruction, and 3D object detection.
         <br><br>
         
