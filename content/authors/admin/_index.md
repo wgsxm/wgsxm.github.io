@@ -25,7 +25,7 @@ highlight_name: true
 # Organizations/Affiliations to display in Biography blox
 organizations:
   - name: Peking University
-    url: https://www.pku.edu.cn/
+    url: https://english.pku.edu.cn/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
@@ -55,6 +55,7 @@ profiles:
 
 education:
   - area: School of Computer Science (SCS)
+    logo: cmu.png
     external_url: https://cs.cmu.edu/
     school: Carnegie Mellon University (CMU)
     school_url: https://cmu.edu/
@@ -63,6 +64,7 @@ education:
     summary: |
       - **Exchange Student**
   - area: School of Electronics Engineering and Computer Science (EECS)
+    logo: pku.png
     external_url: https://eecs.pku.edu.cn/en/
     school: Peking University (PKU)
     school_url: https://english.pku.edu.cn/
@@ -72,6 +74,7 @@ education:
       - **Major**: <a href="https://eecs.pku.edu.cn/en/Education/Programs.htm"><b>Artificial Intelligence</b></a> in ***Zhi Class***, an <a href="https://www.cis.pku.edu.cn/rcpy/zbpy.htm"><b>Honors Program</b></a>
       - **GPA: 3.80/4.0 (Specialized)** 3.79/4.0 (Overall)
   - area: National School of Development (NSD)
+    logo: pku.png
     external_url: https://en.nsd.pku.edu.cn/
     school: Peking University (PKU)
     school_url: https://english.pku.edu.cn/
@@ -80,6 +83,7 @@ education:
     summary: |
       - **Double-major**: <a href="https://en.nsd.pku.edu.cn/programs/doublemajor/index.htm"><b>Economics</b></a>
   - area: Fuzhou No.1 High School
+    logo: fzyz.png
     external_url: http://www.fzyz.net/#/
     date_start: 2019-09-01
     date_end: 2022-06-30
@@ -95,7 +99,7 @@ work:
       - Advisor: **Prof.** <a href="http://www.muyadong.com/"><b>Yadong Mu</b></a>
       - Research Topic: 3D Vision and Multi-Modal Learning
   - position: ZERO Lab
-    external_url: https://zhouchenlin.github.io/
+    external_url: https://zero-lab-pku.github.io/
     date_start: 2024-01-01
     date_end: 2024-05-01
     summary: |2-
