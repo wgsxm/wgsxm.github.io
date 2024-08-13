@@ -55,7 +55,7 @@ profiles:
 
 education:
   - area: School of Computer Science (SCS)
-    logo: cmu.png
+    logo: pku.png
     external_url: https://cs.cmu.edu/
     school: Carnegie Mellon University (CMU)
     school_url: https://cmu.edu/
