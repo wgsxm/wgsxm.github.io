@@ -37,6 +37,7 @@ header:
     align: right
     logo:
       text: "Yuchen Lin"
+      filename: icons/cubes-solid.svg
 
 # Site footer
 footer:
