@@ -29,13 +29,14 @@ marketing:
 # Site header
 header:
   navbar:
-    enable: false
+    enable: true
     blox: "navbar"
     fixed_to_top: true
-    show_search: true
-    show_theme_chooser: true
+    show_search: false
+    show_theme_chooser: false
+    align: right
     logo:
-      text: "Your Name"
+      text: "Yuchen Lin"
 
 # Site footer
 footer:

@@ -60,10 +60,18 @@ sections:
     content:
       title: Research
       text: |-
-        TODO: Update this
+        <div style="font-family: 'Times New Roman', Times, serif; font-size: 20px; ">
+        My research interests lie in 3D computer vision and multi-modal learning,
+        especially in the context of scene understanding and generation.
+        I have worked on several projects about 3D semantic learning, static and dynamic scene reconstruction, and 3D object detection.
+        <br><br>
+        
+        I'm looking for research internship opportunities in related fields.
+        Feel free to contact me! 😃
+        </div>
       filters:
         folders:
-          - publication
+          - research
         exclude_featured: false
     design:
       view: citation
