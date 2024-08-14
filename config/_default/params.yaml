@@ -14,8 +14,8 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'The highly-customizable Hugo Academic theme powered by Hugo Blox Builder. Easily create your personal academic website.'
-    twitter: 'GetResearchDev'
+    description: 'Yuchen Lin's Personal Website'
+    twitter: ''
   analytics:
     google_analytics: 'G-HWZ6GXG1B5'
     baidu_tongji: ''
@@ -23,7 +23,7 @@ marketing:
     fathom: ''
     pirsch: ''
   verification:
-    google: ''
+    google: 'ylv-ltIi7tu_LhHzX5iiY_x3yJqf_2tBku48k_WbPBM'
     baidu: ''
 
 # Site header
