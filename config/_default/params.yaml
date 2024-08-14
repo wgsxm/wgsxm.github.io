@@ -14,7 +14,7 @@ marketing:
     site_type: Person
     local_business_type: ''
     org_name: ''
-    description: 'Yuchen Lin's Personal Website'
+    description: "Yuchen Lin's Personal Website"
     twitter: ''
   analytics:
     google_analytics: 'G-HWZ6GXG1B5'
@@ -23,7 +23,7 @@ marketing:
     fathom: ''
     pirsch: ''
   verification:
-    google: 'ylv-ltIi7tu_LhHzX5iiY_x3yJqf_2tBku48k_WbPBM'
+    google: 'puMofztjjdXQAg7ThHCOz5cSsskT3oYGVNbz4UoITbs'
     baidu: ''
 
 # Site header
