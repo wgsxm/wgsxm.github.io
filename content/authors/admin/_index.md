@@ -177,6 +177,6 @@ majoring in <a class="reference" href="https://eecs.pku.edu.cn/en/Education/Prog
 I am also double-majoring in <a class="reference" href="https://en.nsd.pku.edu.cn/programs/doublemajor/index.htm">Economics</a> at <a class="reference" href="https://en.nsd.pku.edu.cn/">National School of Development</a>.
 I am honored to be advised by Prof. <a class="reference" href="http://www.muyadong.com/">Yadong Mu</a> in <a class="reference" href="https://www.wict.pku.edu.cn/english/home/index.htm">Wangxuan Institute of Computer Technology</a>, <a class="reference" href="https://english.pku.edu.cn/">Peking University</a>.
 I have also worked with Prof. <a class="reference" href="https://zhouchenlin.github.io/">Zhouchen Lin</a> and Prof. <a class="reference" href="https://yzhu.io/">Yixin Zhu</a> during rotations. 
-My research interests lie in Computer Vision, epecially in the field of 3D scene understanding and generation.
+My research interests lie in Computer Vision, epecially in the field of 3D asset understanding and generation.
 I am currently exchanging at <a class="reference" href="https://cs.cmu.edu/">SCS</a> of <a class="reference" href="https://cmu.edu/">Carnegie Mellon University</a> as a visiting student.
 </div>
