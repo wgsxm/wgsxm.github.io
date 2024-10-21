@@ -22,9 +22,13 @@
   {{ $license_url := printf "https://creativecommons.org/licenses/%s/4.0" ($cc_code | urlize) }}
 
   {{ with $notice }}
-  <p class="powered-by text-center">
+  <div class="powered-by text-center flex justify-center">
     {{ replace (replace (replace (replace . "{year}" now.Year) "{month}" now.Month) "{day}" now.Day) "{license}" (printf "<a href=\"%s\" rel=\"noopener noreferrer\" target=\"_blank\">CC %s 4.0</a>" $license_url (replace $cc_code "-" " " | upper)) | markdownify }}
-  </p>
+    <!-- |
+    <a href="https://hits.seeyoufarm.com" style="margin-left: 5px;">
+      <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http%3A%2F%2Fwgsxm.github.io&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/>
+    </a> -->
+  </div>
   {{ end }}
 
   <p class="powered-by footer-license-icons">
