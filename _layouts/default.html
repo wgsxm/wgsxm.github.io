@@ -65,6 +65,7 @@
               <p>
                 My research interests lie in Computer Vision, epecially in the field of 3D asset understanding and generation.
               </p>
+              <i>*: equal contribution</i>
             </td>
           </tr>
         </table>
@@ -75,15 +76,22 @@
           {% if cat == 'research' %}
           <tr>
             <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+              <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
             <td style="padding:2.5%;width:75%;vertical-align:middle">
-              <h3>{{post.title}}</h3>
+              {% if post.website %}
+              <h3><a href="{{post.website}}">{{post.title}}</a></h3>
+              {% else %}
+              <h3><a href="{{post.arxiv}}">{{post.title}}</a></h3>
+              {% endif %}
               <br>
               {{post.authors}}
-
               <br>
               <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
+              <br>
+              {% if post.note %}
+              {{ post.note }}
+              {% endif %}
               <br>
               {% if post.arxiv %}
               <a href="{{post.arxiv}}">arxiv</a> /
@@ -116,7 +124,7 @@
         </table>
 
         <!-- Project -->
-        <br>
+        <!-- <br>
         <br>
         <br>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
@@ -135,7 +143,7 @@
           {% if cat != 'research' and cat != 'Intel' %}
           <tr>
             <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="/tn{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+              <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
             <td style="padding:2.5%;width:75%;vertical-align:middle">
               <h3>{{post.title}}</h3>
@@ -143,7 +151,6 @@
               <em>{{post.categories}} {{post.course}}</em>
               <br>
               {{ post.date | date: "%Y-%m-%d" }}
-
               <br>
               {% if post.website %}
               <a href="{{post.website}}">website</a> /
@@ -182,7 +189,7 @@
           {% endif %}
           {% endfor %}
           {% endfor %}
-        </table>
+        </table> -->
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>

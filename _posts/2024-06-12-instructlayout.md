@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "InstructLayout: Instruction-Driven 2D and 3D Layout Synthesis with Semantic
+  Graph Prior"
+date:   2024-06-12 22:21:59 +00:00
+image: /images/instructlayout.png
+categories: research
+authors: "Chenguo Lin*, <strong>Yuchen Lin</strong>*, Panwang Pan, Xuanyang Zhang, Yadong Mu"
+venue: "arXiv"
+arxiv: https://arxiv.org/abs/2407.07580
+note: Under review by Transactions on Pattern Analysis and Machine Intelligence <strong>(T-PAMI)</strong>
+# code: https://github.com/leonidk/fmb-plus
+# website: https://arxiv.org/abs/2407.07580
+---
+InstructLayout is a generative framework to both 2D E-commerce posters and 3D indoor scenes from instructions, and is composed of a semantic graph prior and a layout decoder.
