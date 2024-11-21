@@ -36,13 +36,13 @@
                 Yuchen Lin | 林宇辰
               </h1>
                 Hi there! I am <b>Yuchen Lin</b>, 
-                a third-year undergraduate student at <a class="reference" href="https://english.pku.edu.cn/">Peking University</a>, 
-                majoring in <a class="reference" href="https://eecs.pku.edu.cn/en/Education/Programs.htm">Artificial Intelligence</a> 
-                in <a class="reference" href="https://zhi-class.ai/">Zhi Class</a> (an honors program directed by Prof. <a class="reference" href="https://baoquanchen.info/">Baoquan Chen</a>) of <a class="reference" href="https://eecs.pku.edu.cn/en/">EECS School</a>.
-                I am also double-majoring in <a class="reference" href="https://en.nsd.pku.edu.cn/programs/doublemajor/index.htm">Economics</a> at <a class="reference" href="https://en.nsd.pku.edu.cn/">National School of Development</a>.
-                I am honored to be advised by Prof. <a class="reference" href="http://www.muyadong.com/">Yadong Mu</a> in <a class="reference" href="https://www.wict.pku.edu.cn/english/home/index.htm">Wangxuan Institute of Computer Technology</a>, <a class="reference" href="https://english.pku.edu.cn/">Peking University</a>.
-                I am currently exchanging at <a class="reference" href="https://cs.cmu.edu/">School of Computer Science</a> of <a class="reference" href="https://cmu.edu/">Carnegie Mellon University</a> as a visiting student, 
-                where I am supervised by Prof. <a class="reference" href="https://www.cs.cmu.edu/~ftorre/">Fernando De la Torre</a> in <a class="reference" href="https://www.ri.cmu.edu/">Robotics Institute</a>.
+                a third-year undergraduate student at <a href="https://english.pku.edu.cn/">Peking University</a>, 
+                majoring in <a href="https://eecs.pku.edu.cn/en/Education/Programs.htm">Artificial Intelligence</a> 
+                in <a href="https://zhi-class.ai/">Zhi Class</a> (an honors program directed by Prof. <a href="https://baoquanchen.info/">Baoquan Chen</a>) of <a href="https://eecs.pku.edu.cn/en/">EECS School</a>.
+                I am also double-majoring in <a href="https://en.nsd.pku.edu.cn/programs/doublemajor/index.htm">Economics</a> at <a href="https://en.nsd.pku.edu.cn/">National School of Development</a>.
+                I am honored to be advised by Prof. <a href="http://www.muyadong.com/">Yadong Mu</a> in <a href="https://www.wict.pku.edu.cn/english/home/index.htm">Wangxuan Institute of Computer Technology</a>, <a href="https://english.pku.edu.cn/">Peking University</a>.
+                I am currently exchanging at <a href="https://cs.cmu.edu/">School of Computer Science</a> of <a href="https://cmu.edu/">Carnegie Mellon University</a> as a visiting student, 
+                where I am supervised by Prof. <a href="https://www.cs.cmu.edu/~ftorre/">Fernando De la Torre</a> in <a href="https://www.ri.cmu.edu/">Robotics Institute</a>.
                 
                 <p>
                   You can find my CV here: <a href="pdfs/cv.pdf">Yuchen Lin's CV</a>.
@@ -76,7 +76,7 @@
         </table>
         
         <!-- Research -->
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <table style="margin-top:-20px;width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Research</h2>
@@ -210,7 +210,7 @@
 
 
         <!-- Experience -->
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        <table style="margin-top:-20px;width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Experiences</h2>
@@ -228,8 +228,11 @@
               <img src="{{post.image}}" style="width:auto; height:auto; max-width:100%;" />
             </td>
             <td style="padding:5%;width:85%;vertical-align:middle">
-              <h3><a href="{{post.website}}"> {{post.institution}} </a></h3>
-              <br> <em>
+              <h3><a href="{{post.website}}"> {{post.institution}} </a></h3> <br>
+              {% if post.secondary_institution %}
+              <h3> <i>{{post.secondary_institution}}</i> </h3> <br>
+              {% endif %}
+               <em>
                 {{post.date_start | date: "%Y.%m"}} - 
                 {% if post.date_end %}
                 {{post.date_end | date: "%Y.%m"}}
@@ -252,8 +255,41 @@
           {% endif %}
           {% endfor %}
           {% endfor %}
-
         </table>
+
+         <!-- Service -->
+         <table style="margin-top:-20px;width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>Services</h2>
+              <ul>
+                <li>
+                  I am the deputy director of the student union operations department in EECS School, Peking University.
+                </li> <br>
+                <li>
+                  I serve as a member of the Peking University admissions team every year. 
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+         <!-- Awards -->
+         <table style="margin-top:-20px;width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>Selected Awards</h2>
+              <ul>
+                <li>
+                  I am the deputy director of the student union operations department in EECS School, Peking University.
+                </li> <br>
+                
+              </ul>
+            </td>
+          </tr>
+        </table>
+
+
 
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
