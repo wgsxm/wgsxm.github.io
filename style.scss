@@ -12,17 +12,31 @@
 /**************/
 /* BASE RULES */
 /**************/
+
+news {
+  cursor: pointer;
+  color: #b06f25ce;
+  text-decoration: none;
+}
+
+news:focus,
+news:hover {
+  color: #f09228;
+  text-decoration: underline;
+}
+
 a {
-  color: #1772d0;
+  color: #527bbd;
   text-decoration: none;
 }
 
 a:focus,
 a:hover {
   color: #f09228;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
+news,
 body,
 td,
 th,
@@ -44,7 +58,7 @@ h2 {
   font-family: 'Lato', Verdana, Helvetica, sans-serif;
   font-size: 22px;
   font-display: auto;
-  font-weight: normal;
+  font-weight: bold;
   padding: 0px;
   margin: 0px;
   display:inline; 

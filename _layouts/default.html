@@ -44,6 +44,9 @@
                 I am currently exchanging at <a class="reference" href="https://cs.cmu.edu/">School of Computer Science</a> of <a class="reference" href="https://cmu.edu/">Carnegie Mellon University</a> as a visiting student, 
                 where I am supervised by Prof. <a class="reference" href="https://www.cs.cmu.edu/~ftorre/">Fernando De la Torre</a> in <a class="reference" href="https://www.ri.cmu.edu/">Robotics Institute</a>.
                 
+                <p>
+                  You can find my CV here: <a href="pdfs/cv.pdf">Yuchen Lin's CV</a>.
+                </p>
                 
               <p style="text-align:center">
                 <a target="_blank" href="mailto:linyuchen@stu.pku.edu.cn"> Email</a> &nbsp;/&nbsp;
@@ -58,6 +61,21 @@
           </tr>
         </table>
 
+        <!-- News -->
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>News</h2>
+              <ul>
+                <li>
+                  [2024/08] I come to <news onclick="window.location='https://example.com'">CMU</news> as a visiting student in <news onclick="window.location='https://cs.cmu.edu/'">School of Computer Science</news>. 
+                </li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+        
+        <!-- Research -->
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
@@ -124,10 +142,8 @@
         </table>
 
         <!-- Project -->
-        <!-- <br>
-        <br>
-        <br>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+
+        <!-- <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>Projects</h2>
@@ -135,8 +151,9 @@
               </p>
             </td>
           </tr>
-        </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+        </table> -->
+
+        <!-- <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
 
           {% for post in site.posts %}
           {% for cat in post.categories %}
@@ -191,13 +208,60 @@
           {% endfor %}
         </table> -->
 
+
+        <!-- Experience -->
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          <tr>
+            <td style="padding:2.5%;width:100%;vertical-align:middle">
+              <h2>Experiences</h2>
+            </td>
+          </tr>
+        </table>
+
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+          
+          {% for post in site.posts %}
+          {% for cat in post.categories %}
+          {% if cat == 'experience' %}
+          <tr>
+            <td style="padding-left:30px;width:18%;vertical-align:middle;">
+              <img src="{{post.image}}" style="width:auto; height:auto; max-width:100%;" />
+            </td>
+            <td style="padding:5%;width:85%;vertical-align:middle">
+              <h3><a href="{{post.website}}"> {{post.institution}} </a></h3>
+              <br> <em>
+                {{post.date_start | date: "%Y.%m"}} - 
+                {% if post.date_end %}
+                {{post.date_end | date: "%Y.%m"}}
+                {% else %}
+                Present
+                {% endif %}
+              </em><br>  
+              <strong> {{post.position}} </strong> <br> 
+              {% if post.research_advisor %}
+                Research Advisor: {{post.research_advisor}} <br>
+              {% endif %}
+              {% if post.academic_advisor %}
+                Academic Advisor: {{post.academic_advisor}} <br>
+              {% endif %}
+              {% if post.note %}
+                {{post.note}} <br>
+              {% endif %}
+            </td>
+          </tr>
+          {% endif %}
+          {% endfor %}
+          {% endfor %}
+
+        </table>
+
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:0px">
               <br>
               <p style="text-align:center;font-size:small;">
                 
-                © Yuchen Lin | Last update 
+                © Yuchen Lin | Last update:  {{ site.time | date: "%Y/%m/%d" }}
                 </p>
                 <p style="text-align:center;font-size:small;">
                 Design and source code from <a style="font-size:small;" href="https://jonbarron.info">Jon Barron's website</a> and <a style="font-size:small;" href="https://github.com/leonidk/leonidk.github.io">Leonid Keselman's Jekyll fork</a>. 
