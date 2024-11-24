@@ -96,9 +96,16 @@
           {% for cat in post.categories %}
           {% if cat == 'research' %}
           <tr>
+            {% if post.image %}
             <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
               <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
+            {% endif %}
+            {% if post.video %}
+            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+              <video src="{{post.video}}" style="width:auto; height:auto; max-width:100%;" autoplay loop muted></video>
+            </td>
+            {% endif %}
             <td style="padding:2.5%;width:75%;vertical-align:middle">
               {% if post.website %}
               <h3><a href="{{post.website}}">{{post.title}}</a></h3>
@@ -111,14 +118,16 @@
               <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
               <br>
               {% if post.note %}
-              {{ post.note }}
+              {{ post.note }}<br>
               {% endif %}
-              <br>
+              
               {% if post.arxiv %}
               <a href="{{post.arxiv}}">arxiv</a> /
               {% endif %}
-              {% if post.video %}
-              <a href="{{post.video}}">video</a> /
+              {% if post.image %}
+                {% if post.video %}
+                <a href="{{post.video}}">video</a> /
+                {% endif %}
               {% endif %}
               {% if post.code %}
               <a href="{{post.code}}">code</a> /
