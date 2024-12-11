@@ -2,13 +2,13 @@
 layout: post
 title:  "OmniPhysGS: 3D Constitutive Gaussians for General Physics-based Dynamics Generation"
 date:   2024-11-21 22:21:59 +00:00
-# image: 
-video: /videos/omniphysgs.mp4
-categories: draft
+image: /images/omniphysgs.png
+# video: /videos/omniphysgs.mp4
+categories: research
 authors: <author>Yuchen Lin</author>, <a href="https://chenguolin.github.io/">Chenguo Lin</a>, <a href="">Jianjin Xu</a>, <a href="http://www.muyadong.com/">Yadong Mu</a>
 venue: arXiv
 arxiv: /
-note: 
+# note: 
 code: /
 website: /
 ---
