@@ -197,6 +197,9 @@
               {% if post.note %}
               {{ post.note }}<br>
               {% endif %}
+              {% if post.pdf %}
+              <a href="{{post.pdf}}">pdf</a> /
+              {% endif %}
               {% if post.arxiv %}
               <a href="{{post.arxiv}}">arxiv</a> /
               {% endif %}
