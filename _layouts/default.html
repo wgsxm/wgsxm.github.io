@@ -62,8 +62,9 @@
                 <a class="news_style" href="wechat.html"> WeChat </a>
               </p>
             </td>
-            <td style="padding:2.5%;width:30%;max-width:40%">
+            <td style="padding:2.5%;width:30%;max-width:40%;text-align: center;">
               <img style="width:100%;max-width:100%" alt="profile photo" src="images/avatar.jpg">
+              <a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http%3A%2F%2F127.0.0.1%3A4000&count_bg=%23EBC89F&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false"/></a>
             </td>
           </tr>
         </table>
@@ -114,7 +115,11 @@
               {% if post.website %}
               <h3><a href="{{post.website}}">{{post.title}}</a></h3>
               {% else %}
-              <h3><a href="{{post.arxiv}}">{{post.title}}</a></h3>
+                {% if post.arxiv %}
+                <h3><a href="{{post.arxiv}}">{{post.title}}</a></h3>
+                {% else %}
+                <h3><a href="{{post.pdf}}">{{post.title}}</a></h3>
+                {% endif %}
               {% endif %}
               <br>
               {{post.authors}}
@@ -189,7 +194,11 @@
               {% if post.website %}
               <h3><a href="{{post.website}}">{{post.title}}</a></h3>
               {% else %}
-              <h3><a href="{{post.arxiv}}">{{post.title}}</a></h3>
+                {% if post.arxiv %}
+                <h3><a href="{{post.arxiv}}">{{post.title}}</a></h3>
+                {% else %}
+                <h3><a href="{{post.pdf}}">{{post.title}}</a></h3>
+                {% endif %}
               {% endif %}
               <br>
               {{post.authors}}
@@ -336,8 +345,18 @@
           </tr>
         </table>
 
-
-
+        <table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
+                    <tbody>
+                    <tr>
+                        <td style="padding:0px;width:23%;vertical-align:left">
+                            <br>
+                            <div style="width: 50%; text-align: center; margin: 0 auto;">
+                              <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=YRgAb_PMJ3KdkDivtbQOJWfG72zghinMkW0Nlti-3p0&cl=ffffff&w=a"></script>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
         <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:0px">
