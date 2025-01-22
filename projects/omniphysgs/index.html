@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="OmniPhysGS is a novel framework for general physics-based 3D dynamic scene synthesis, which can automatically and flexibly model various materials with domain-expert constitutive models in a physics-guided network.">
+  <meta name="keywords" content="OmniPhysGS, Physics-based Modeling, 3D Dynamics, 3D Gaussian Splatting, Video Score Distillation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OmniPhysGS</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-GCYXM7G6QJ"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GCYXM7G6QJ');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <link rel="icon" href="./static/images/logo_trans.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+
+<style>
+  .morphing-text {
+      background-image: linear-gradient(to right, 
+       #f39c12 0%, #e67e22 25%, #d35400 75%, #f1c40f 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+  }
+  .center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<body>
+
+  <!-- Section 1: Banner -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <!-- Title -->
+            <h1 class="title is-2 publication-title">
+              <span class="morphing-text model-name">OmniPhysGS</span>:
+              <span>3D Constitutive Gaussians for General Physics-based Dynamics Generation</span>
+            </h1>
+
+            <!-- Authors -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://wgsxm.github.io">Yuchen Lin</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://chenguolin.github.io">Chenguo Lin</a><sup>1†</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://atlantixjj.github.io/">Jianjin Xu</a><sup>2</sup>,
+              </span>
+              <span class="author-block">
+                <a href="http://www.muyadong.com">Yadong Mu</a><sup>1‡</sup>
+              </span>
+            </div>
+
+            <!-- Affiliations -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Peking University</span> &nbsp;
+              <span class="author-block"><sup>2</sup>Carnegie Mellon University</span>
+            </div>
+
+            <!-- Emails -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">✉️: <a href="mailto:linyuchen@stu.pku.edu.cn">linyuchen@stu.pku.edu.cn</a></span>
+            </div>
+
+            <!-- Author Notes -->
+            <div class="is-size-6 publication-authors">
+              <span class="author-block"><i>† denotes project lead, ‡ denotes corresponding author</i></span>
+            </div>
+
+            <!-- Links -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- OpenReview Link -->
+                <!-- <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-file-alt"></i></span>
+                    <span>OpenReview</span>
+                  </a>
+                </span> &nbsp; -->
+                <!-- ArXiv Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/241x.xxxxx todo" 
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="ai ai-arxiv"></i></span>
+                    <span>arXiv</span>
+                  </a>
+                </span> &nbsp;
+                <!-- Code Link -->
+                <span class="link-block">
+                  <a href="https://github.com/wgsxm/OmniPhysGS"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span>Code</span>
+                  </a>
+                </span> &nbsp;
+                <!-- Model Link -->
+                <!-- <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-database"></i></span>
+                    <span>Model</span>
+                  </a>
+                </span> &nbsp; -->
+                <!-- Demo Link -->
+                <!-- <span class="link-block">
+                  <a href=""
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon"><i class="fas fa-magic"></i></span>
+                    <span>Demo</span>
+                  </a>
+                </span> -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div style="text-align: center;">
+        <video class="" src="./static/images/overview.mp4" autoplay loop muted></video> 
+      </div>
+        <h2 class="subtitle has-text-centered">
+          <span class="morphing-text model-name"><b>OmniPhysGS</b></span> is a novel framework for <b>general physics-based 3D dynamic scene synthesis</b>, 
+          which can automatically and flexibly model various materials with domain-expert <span class="morphing-text model-name"><b>Constitutive Gaussians</b></span>.
+        </h2>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Main Demo -->
+  <!-- <section class="hero is-light is-small">
+    <video src="./static/images/teaser_scrolling.mp4" autoplay loop muted></video>
+  </section> -->
+
+  <!-- Section 4: Abstract -->
+  <section style="margin-top: -5pt;" class="section">
+    <div class="container is-max-desktop">
+
+      <!-- Abstract -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">🧩&nbsp;&nbsp; Abstract &nbsp;&nbsp;🧩</h2>
+          <div class="content has-text-justified">
+            <img src="./static/images/teaser.png"  class="center-img"/><br><br>
+            <p style="margin-top: -15pt;">
+            Recently, significant advancements have been made in the reconstruction and generation of 3D assets, 
+            including static cases and those with physical interactions. 
+            To recover the physical properties of 3D assets, existing methods typically assume that all materials belong to a specific predefined category (<i>e.g.</i>, elasticity). 
+            However, such assumptions ignore the complex composition of multiple heterogeneous objects in real scenarios and tend to render less physically plausible animation given a wider range of objects. 
+            We propose <span class="morphing-text model-name"><b>OmniPhysGS</b></span> for synthesizing a physics-based 3D dynamic scene composed of more general objects.</p><p> 
+            A key design of <span class="morphing-text model-name"><b>OmniPhysGS</b></span> is treating each 3D asset as a collection of <span class="morphing-text model-name"><b>Constitutive 3D Gaussians</b></span>. 
+            For each Gaussian, its physical material is represented by an ensemble of 12 physical domain-expert sub-models (rubber, metal, honey, water, etc.), 
+            which greatly enhances the flexibility of the proposed model. 
+            In the implementation, we define a scene by user-specified prompts and supervise the estimation of material weighting factors via a pretrained video diffusion model.
+            Comprehensive experiments demonstrate that achieves more general and realistic physical dynamics across a broader spectrum of materials, 
+            including elastic, viscoelastic, plastic, and fluid substances, as well as interactions between different materials. 
+            Our method surpasses existing methods by approximately <b>3%</b> to <b>16%</b> in metrics of visual quality and text alignment. 
+          </p>  
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 5: Method -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">🔮&nbsp;&nbsp; Method &nbsp;&nbsp;🔮</h2>
+          <h3 class="title is-4">Constitutive Gaussian</h3>
+          <div class="content has-text-justified">
+            <img src="./static/images/method.png" width="100%" class="center-img"/>
+            <p>
+              The capability of <span class="morphing-text model-name"><b>OmniPhysGS</b></span> in general physics-based 3D dynamic synthesis is achieved by three key components: 
+              (1) <b>a memory-efficient MPM solver</b> that imposes strong physical constraints for the scene; 
+              (2) <b>Constitutive Gaussians</b> for flexible and general material modeling;
+              (3) <b>video score distillation</b> to provide prior knowledge for encoded in the pretrained video diffusion model.
+
+            </p>
+          </div>
+
+          <h3 class="title is-4">Physics-guided Network</h3>
+          <div class="content has-text-justified">
+            <img src="./static/images/network.png" width="100%" class="center-img"/>
+            <p style="margin-top: 5pt;">
+              The physically guided architecture of <span class="morphing-text model-name"><b>Constitutive Gaussians</b></span> consists of two main
+              components: 
+              (1) <b>a 3D feature encoder backbone</b> to extract features of 3D scenes 
+              (2) <b>a physical-aware decoder</b> to predict the material properties of Constitutive Gaussians with <b>an ensemble of domain-expert sub-models</b>.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: T23D Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">📝&nbsp;&nbsp; Single Object with Different Material &nbsp;&nbsp;📝</h2>
+          <!-- <div class="content has-text-justified">
+            <p>
+              Text prompts are taken from <a href="https://t3bench.com">T3Bench</a> and
+              <a href="https://instant-3d.github.io">Instant3D</a>.
+            </p>
+          </div> -->
+
+          <div style="text-align:center">
+            <table style="width: 100%">
+              <tbody>
+
+                <tr class="result-row">
+                  <td><video src="./static/images/single/ficus_swing.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/ficus_collapse.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/bear_rubber.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/bear_sand.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>A swinging ficus</td>
+                    <td>A collapsing ficus</td>
+                    <td>A rubber wolf bouncing</td>
+                    <td>A sand wolf collapsing</td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><video src="./static/images/single/water_jelly.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/water_liquid.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/can_metal.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/duck_rubber.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>A jelly bouncing</td>
+                    <td>Water flowing</td>
+                    <td>A crushed metal can</td>
+                    <td>A rubber duck falling</td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><video src="./static/images/single/pile_sand.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/soccer.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/ficus_soft.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/ficus_hard.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>A collapsing mud pile</td>
+                    <td>A soccer ball hits the ground</td>
+                    <td>A soft ficus swinging heavily in the wind</td>
+                    <td>A ficus swinging slightly</td>
+                </tr>
+                
+                <tr class="result-row">
+                  <td><video src="./static/images/single/bear_soft.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/bear_hard.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/jelly_soft.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/single/jelly_hard.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>A very soft, bouncy rubber wolf</td>
+                    <td>A hard wolf</td>
+                    <td>A very tender jelly</td>
+                    <td>A firming jelly</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: I23D Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">🛠️&nbsp;&nbsp; Multiple Objects with Different Materials &nbsp;&nbsp;🛠️</h2>
+          <div class="content has-text-justified"></div>
+
+          <div style="text-align:center">
+            <table style="width: 100%">
+              <tbody>
+                
+                <tr class="result-row">
+                  <td><video src="./static/images/multi/lego_pile.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/multi/water_bear.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>A lego excavator is digging soil</td>
+                    <td>A rubber wolf falling on water</td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><video src="./static/images/multi/can_duck.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/multi/pile_duck.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>A hard duck colliding to create a dent in a breakable metal can</td>
+                    <td>A duck falling on a soft mud pile</td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><video src="./static/images/multi/two_bears.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/multi/two_ducks.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>A golden rubber wolf bouncing and a grey sand wolf collapsing</td>
+                    <td>Two rubber ducks colliding</td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><video src="./static/images/multi/materials.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/multi/pillow.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>Different kinds of materials on the table</td>
+                    <td>Pillows falling into a basket</td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Controllable Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">🕹️&nbsp;&nbsp; Motion Generalization &nbsp;&nbsp;🕹️</h2>
+
+          <div style="text-align:center; margin-bottom: 20px">
+            <table style="width: 100%">
+              <tbody>
+
+                <tr class="result-row">
+                  <td><video src="./static/images/motion/fall.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/motion/flip.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>Falling</td>
+                    <td>Flipping</td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><video src="./static/images/motion/spin.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/motion/tease.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>Spinning</td>
+                    <td>Teasing</td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: Ablation Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">🖼️&nbsp;&nbsp; Real-world Scene &nbsp;&nbsp;🖼️</h2>
+
+          <div style="text-align:center; margin-bottom: 20px">
+            <table style="width: 100%">
+              <tbody>
+
+                <tr class="result-row">
+                  <td><video src="./static/images/real/flower.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/real/fox.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+                <tr class="prompt-row">
+                    <td>Flowers swinging gently</td>
+                    <td>A fox shaking its head</td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section -3: Related Links -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">🌐&nbsp;&nbsp; Related Links &nbsp;&nbsp;🌐</h2>
+
+          <div class="content has-text-justified">
+            <ul>
+
+              <li>
+                <a href="https://xpandora.github.io/PhysGaussian/">
+                  [CVPR' 2024] PhysGaussian: Physics-Integrated 3D Gaussians for Generative Dynamics</a>  
+                </a>
+              </li>
+
+              <li>
+                <a href="https://physdreamer.github.io/">
+                  [ECCV' 2024] PhysDreamer: Physics-Based Interaction with 3D Objects via Video Generation</a>  
+                </a>
+              </li>
+
+              <li>
+                <a href="https://liuff19.github.io/Physics3D/">
+                  [ArXiv' 2406] Physics3D: Learning Physical Properties of 3D Gaussians via Video Diffusion</a>  
+                </a>
+              </li>
+
+              <li>
+                <a href="https://github.com/tyhuang0428/DreamPhysics">
+                  [ArXiv' 2406] DreamPhysics: Learning Physical Properties of Dynamic 3D Gaussians from Video Diffusion Priors.</a>  
+                </a>
+              </li>
+
+              <li>
+                <a href="https://sites.google.com/view/nclaw">
+                  [ICML' 2023] Learning Neural Constitutive Laws From Motion Observations for Generalizable PDE Dynamics</a>  
+                </a>
+              </li>
+
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section -2 BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">📚&nbsp;&nbsp; BibTeX &nbsp;&nbsp;📚</h2>
+      <div class="content has-text-justified">
+
+        <p>
+          If you find our work helpful, please consider citing:
+        </p>
+        <pre>
+          <code>@article{todo,
+  title={OmniPhysGS: 3D Constitutive Gaussians for General Physics-based Dynamics Generation}
+  author={Lin, Yuchen and Lin, Chenguo and Xu, Jianjin and Mu, Yadong},
+  journal={arXiv preprint arXiv:241x.xxxxx},
+  year={2024}
+}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section -1: Footer -->
+  <footer class="footer">
+    <div class="container">
+
+      <!-- Icon Links -->
+      <div class="content has-text-centered">
+        <a class="icon-link" href="mailto:linyuchen@stu.pku.edu.cn" class="external-link" disabled>
+          <i class="fas fa-envelope"></i>todo
+        </a> &nbsp;
+        <a class="icon-link" href="https://arxiv.org/pdf/241x.xxxxx.pdf" class="external-link" disable>
+          <i class="fas fa-file-pdf"></i>
+        </a> &nbsp;
+        <a class="icon-link" href="https://github.com/wgsxm/omniphysgs" class="external-link" disabled>
+          <i class="fab fa-github"></i>
+        </a> &nbsp;
+        <!-- <a class="icon-link" href="" class="external-link" disabled>
+          <i class="fas fa-database"></i>
+        </a> &nbsp;
+        <a class="icon-link" href="" class="external-link" disabled>
+          <i class="fas fa-magic"></i>
+        </a> -->
+      </div>
+
+      <!-- Copyright -->
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p style="text-align: center">
+              Website template is borrowed from <a href="https://nerfies.github.io">Nerfies</a>.
+              Thanks for their effort.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+
+</html>
