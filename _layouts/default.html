@@ -60,7 +60,7 @@
               <p style="text-align:center">
                 <!-- <a class="news_style" target="_blank" href="mailto:linyuchen@stu.pku.edu.cn"> Email</a> &nbsp;/&nbsp; -->
                 <a class="news_style" href="https://github.com/wgsxm">GitHub</a> &nbsp;/&nbsp;
-                <a class="news_style" href="https://scholar.google.com/citations?user=tOeHK78AAAAJ">Google Scholar</a> &nbsp;/&nbsp;
+                <a class="news_style" href="https://scholar.google.com/citations?user=fBAKIvgAAAAJ">Google Scholar</a> &nbsp;/&nbsp;
                 <a class="news_style" href="wechat.html"> WeChat </a>
               </p>
             </td>
@@ -76,7 +76,10 @@
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
               <h2>News</h2>
-              <ul>
+              <ul style="line-height: 1.8;">
+                <li>
+                  [2024/01] One paper about 3D dynamics generation (<a href="/projects/omniphysgs/">OmniPhysGS</a>) is accepted by <b>ICLR</b> 2025. 
+                </li>
                 <li>
                   [2024/08] I come to <a href='https://cmu.edu'>CMU</a> as a visiting student in <a href='https://cs.cmu.edu/'>School of Computer Science</a>. 
                 </li>
@@ -126,7 +129,7 @@
               <br>
               {{post.authors}}
               <br>
-              <em>{{post.venue}}</em>, {{ post.date | date: "%Y" }}
+              <em>{{post.venue}}</em>{% if post.venue_short %} (<b>{{post.venue_short}}</b>){% endif %}, {{ post.date | date: "%Y" }}
               <br>
               {% if post.note %}
               {{ post.note }}<br>
