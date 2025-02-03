@@ -7,9 +7,9 @@ categories: research
 authors: <author>Yuchen Lin</author>, <a href="https://chenguolin.github.io/">Chenguo Lin</a>, <a href="https://atlantixjj.github.io/">Jianjin Xu</a>, <a href="http://www.muyadong.com/">Yadong Mu</a>
 venue: International Conference on Learning Representations
 venue_short: ICLR
-arxiv: /
+arxiv: https://arxiv.org/abs/2501.18982
 # note: 
-code: /
+code: https://github.com/wgsxm/omniphysgs
 website: /projects/omniphysgs
 ---
 OmniPhysGS is a novel framework for general physics-based 3D dynamic scene synthesis, which can automatically and flexibly model various materials with domain-expert Constitutive Gaussians. 
