@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PartCrafter</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <link rel="icon" href="./static/images/logo.png">
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+
+<style>
+  .morphing-text {
+      background-image: linear-gradient(to right, 
+       #f39c12 0%, #e67e22 25%, #d35400 75%, #f1c40f 100%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+  }
+  .center-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<body>
+
+  <!-- Section 1: Banner -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+
+            <!-- Title -->
+            <h1 class="title is-2 publication-title">
+              <span class="morphing-text model-name">PartCrafter</span>:
+              <span>3D Native Structured Diffusion Model</span>
+            </h1>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Teaser -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <div style="text-align: center;">
+          <img src="./static/images/teaser.png" width="100%" class="center-img"/>
+        <!-- <video class="" src="./static/images/overview.mp4" autoplay loop muted></video>  -->
+      </div>
+        <h2 class="subtitle has-text-centered">
+          <span class="morphing-text model-name"><b>PartCrafter</b></span> <b>is a structured 3D generative model that</b>
+          <br>
+          <b>jointly generates multiple parts and objects from a single RGB image in one shot.</b>
+        </h2>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Abstract -->
+  <section style="margin-top: -5pt;" class="section">
+    <div class="container is-max-desktop">
+
+      <!-- Abstract -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">🧩&nbsp;&nbsp; Abstract &nbsp;&nbsp;🧩</h2>
+          <div class="content has-text-justified">
+            <p>
+              We introduce <span class="morphing-text model-name"><b>PartCrafter</b></span>, <b>the first structured 3D generative model that jointly synthesizes multiple semantically meaningful and geometrically distinct 3D meshes from a single RGB image.</b> Unlike existing methods that either produce monolithic 3D shapes or follow two-stage pipelines, <i>i.e.</i>, first segmenting an image and then reconstructing each segment, <span class="morphing-text model-name"><b>PartCrafter</b></span> adopts a unified, compositional generation architecture that does not rely on pre-segmented inputs. Conditioned on a single image, it simultaneously denoises multiple 3D parts, enabling end-to-end part-aware generation of both individual objects and complex multi-object scenes. 
+            </p>
+            <p>
+              <span class="morphing-text model-name"><b>PartCrafter</b></span> builds upon a pretrained 3D mesh diffusion transformer (DiT) trained on whole objects, inheriting the pretrained weights, encoder, and decoder, and introduces two key innovations: <b>(1) A compositional latent space</b>, where each 3D part is represented by a set of disentangled latent tokens; <b>(2) A hierarchical attention mechanism</b> that enables structured information flow both within individual parts and across all parts, ensuring global coherence while preserving part-level detail during generation. To support part-level supervision, <b>we curate a new dataset by mining part-level annotations from large-scale 3D object datasets.</b> Experiments show that <span class="morphing-text model-name"><b>PartCrafter</b></span> outperforms existing approaches in generating decomposable 3D meshes, including parts that are not directly visible in input images, demonstrating the strength of part-aware generative priors for 3D understanding and synthesis. Code and training data will be released. 
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Section 3: Method -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">🔮&nbsp;&nbsp; Method &nbsp;&nbsp;🔮</h2>
+          <h3 class="title is-4">Architecture</h3>
+          <div class="content has-text-justified">
+            <img src="./static/images/method.png" width="100%" class="center-img"/>
+            <p>
+              The capability of <span class="morphing-text model-name"><b>PartCrafter</b></span> in generating structured 3D assets, <i>e.g.</i>, 3D part-decomposable objects or 3D scenes composed of multiple object parts, is achieved by 
+              <b>(1) Compositional Latent Space</b>, where each 3D part is represented by a set of disentangled latent tokens. To distinguish across parts, we add a learnable part identity embedding to the tokens of each part. 
+              <b>(2) Local-Global Denoising Transformer</b>, where information across sets of latent tokens is fused to enable both local-level and global-level reasoning.  Incorporation of the image condition into both local and global features ensure the independence and semantic coherence of the generated parts.
+
+            </p>
+          </div>
+
+          <h3 class="title is-4">Dataset Curation</h3>
+          <div class="content has-text-justified">
+            <img src="./static/images/dataset.jpg" width="100%" class="center-img"/>
+            <p style="margin-top: 5pt;">
+              Large-scale 3D object datasets often contain rich part annotations. The pie chart and bin chart visualize the distribution of an object's part count. We curate a dataset by combining multiple sources, yielding 130,000 3D objects, of which 100,000 contain multiple parts. We further refine this dataset by filtering based on texture quality, part count, and average part-level Intersection over Union (IoU) to ensure high-quality supervision. <b>The resulting dataset comprises approximately 50,000 part-labeled objects and 300,000 individual parts.</b>
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Object Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">📝&nbsp;&nbsp; Image to 3D Part-Level Object Generation &nbsp;&nbsp;📝</h2>
+
+          <div style="text-align:center">
+            <table style="width: 100%">
+              <tbody>
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/00.png"></td>
+                <td><video src="./static/images/object/ours/00.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/00.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/01.png"></td>
+                <td><video src="./static/images/object/ours/01.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/01.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/02.png"></td>
+                <td><video src="./static/images/object/ours/02.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/02.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/03.png"></td>
+                <td><video src="./static/images/object/ours/03.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/03.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/04.png"></td>
+                <td><video src="./static/images/object/ours/04.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/04.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/05.png"></td>
+                <td><video src="./static/images/object/ours/05.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/05.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/06.png"></td>
+                <td><video src="./static/images/object/ours/06.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/06.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/07.png"></td>
+                <td><video src="./static/images/object/ours/07.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/07.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/08.png"></td>
+                <td><video src="./static/images/object/ours/08.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/08.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/09.png"></td>
+                <td><video src="./static/images/object/ours/09.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/09.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/10.png"></td>
+                <td><video src="./static/images/object/ours/10.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/10.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/11.png"></td>
+                <td><video src="./static/images/object/ours/11.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/11.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/12.png"></td>
+                <td><video src="./static/images/object/ours/12.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/12.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/13.png"></td>
+                <td><video src="./static/images/object/ours/13.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/13.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/14.png"></td>
+                <td><video src="./static/images/object/ours/14.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/14.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/15.png"></td>
+                <td><video src="./static/images/object/ours/15.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/15.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/16.png"></td>
+                <td><video src="./static/images/object/ours/16.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/16.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/17.png"></td>
+                <td><video src="./static/images/object/ours/17.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/17.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/18.png"></td>
+                <td><video src="./static/images/object/ours/18.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/18.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/19.png"></td>
+                <td><video src="./static/images/object/ours/19.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/19.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/20.png"></td>
+                <td><video src="./static/images/object/ours/20.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/20.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/21.png"></td>
+                <td><video src="./static/images/object/ours/21.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/21.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/22.png"></td>
+                <td><video src="./static/images/object/ours/22.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/22.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              <tr class="result-row">
+                <td><img src="./static/images/object/gt/23.png"></td>
+                <td><video src="./static/images/object/ours/23.mp4" width="80%" autoplay loop muted></video></td>
+                <td><video src="./static/images/object/ours/splited/23.mp4" width="80%" autoplay loop muted></video></td>
+              </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Scene Results -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">🖼️&nbsp;&nbsp; Image to 3D Scene Generation &nbsp;&nbsp;🖼️</h2>
+
+          <div style="text-align:center">
+            <table style="width: 100%">
+              <tbody>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/00.png"></td>
+                  <td><video src="./static/images/scene/ours/00.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/01.png"></td>
+                  <td><video src="./static/images/scene/ours/01.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/02.png"></td>
+                  <td><video src="./static/images/scene/ours/02.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/03.png"></td>
+                  <td><video src="./static/images/scene/ours/03.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/04.png"></td>
+                  <td><video src="./static/images/scene/ours/04.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/05.png"></td>
+                  <td><video src="./static/images/scene/ours/05.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/06.png"></td>
+                  <td><video src="./static/images/scene/ours/06.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/07.png"></td>
+                  <td><video src="./static/images/scene/ours/07.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/08.png"></td>
+                  <td><video src="./static/images/scene/ours/08.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Comparison -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">🛠️&nbsp;&nbsp; Ablation Study &nbsp;&nbsp;🛠️</h2>
+
+          <div style="text-align:center">
+            <table style="width: 100%">
+              <tbody>
+                  <tr class="result-row">
+                    <td><b>Input</b></td>
+                    <td><b>2 Parts</b></td>
+                    <td><b>3 Parts</b></td>
+                    <td><b>4 Parts</b></td>
+                  </tr> 
+
+                  <tr class="result-row">
+                    <td><img src="./static/images/ab/1.png"></td>
+                    <td><video src="./static/images/ab/1/2.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/1/3.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/1/4.mp4" width="80%" autoplay loop muted></video></td>
+                  </tr>
+
+                  <tr class="result-row">
+                    <td><b>5 Parts</b></td>
+                    <td><b>6 Parts</b></td>
+                    <td><b>7 Parts</b></td>
+                    <td><b>8 Parts</b></td>
+                  </tr> 
+
+                  <tr class="result-row">
+                    <td><video src="./static/images/ab/1/5.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/1/6.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/1/7.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/1/8.mp4" width="80%" autoplay loop muted></video></td>
+                  </tr>
+
+                  <tr class="result-row">
+                    <td><b>Input</b></td>
+                    <td><b>2 Parts</b></td>
+                    <td><b>3 Parts</b></td>
+                    <td><b>4 Parts</b></td>
+                  </tr> 
+
+                  <tr class="result-row">
+                    <td><img src="./static/images/ab/2.png"></td>
+                    <td><video src="./static/images/ab/2/2.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/2/3.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/2/4.mp4" width="80%" autoplay loop muted></video></td>
+                  </tr>
+
+                  <tr class="result-row">
+                    <td><b>5 Parts</b></td>
+                    <td><b>6 Parts</b></td>
+                    <td><b>7 Parts</b></td>
+                    <td><b>8 Parts</b></td>
+                  </tr> 
+
+                  <tr class="result-row">
+                    <td><video src="./static/images/ab/2/5.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/2/6.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/2/7.mp4" width="80%" autoplay loop muted></video></td>
+                    <td><video src="./static/images/ab/2/8.mp4" width="80%" autoplay loop muted></video></td>
+                  </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Comparison -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+
+          <h2 class="title is-3 has-text-centered">🎨&nbsp;&nbsp; More Results &nbsp;&nbsp;🎨</h2>
+          <h3 class="title is-4 has-text-centered">
+            A. Comparison with <a href="https://vast-ai-research.github.io/HoloPart/">HoloPart</a>
+          </h3>
+          <div style="text-align:center">
+            <table style="width: 100%">
+              <tbody>
+
+                <tr class="result-row">
+                  <td><b>Input</b></td>
+                  <td><b>HoloPart</b></td>
+                  <td><b>Ours</b></td>
+                </tr> 
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/00.png"></td>
+                  <td><video src="./static/images/object/holopart/00.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/00.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/01.png"></td>
+                  <td><video src="./static/images/object/holopart/01.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/01.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/02.png"></td>
+                  <td><video src="./static/images/object/holopart/02.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/02.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/03.png"></td>
+                  <td><video src="./static/images/object/holopart/03.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/03.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/04.png"></td>
+                  <td><video src="./static/images/object/holopart/04.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/04.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/06.png"></td>
+                  <td><video src="./static/images/object/holopart/06.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/06.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/07.png"></td>
+                  <td><video src="./static/images/object/holopart/07.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/07.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/08.png"></td>
+                  <td><video src="./static/images/object/holopart/08.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/08.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/09.png"></td>
+                  <td><video src="./static/images/object/holopart/09.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/09.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/11.png"></td>
+                  <td><video src="./static/images/object/holopart/11.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/11.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/12.png"></td>
+                  <td><video src="./static/images/object/holopart/12.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/12.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/13.png"></td>
+                  <td><video src="./static/images/object/holopart/13.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/13.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/14.png"></td>
+                  <td><video src="./static/images/object/holopart/14.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/14.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/16.png"></td>
+                  <td><video src="./static/images/object/holopart/16.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/16.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/17.png"></td>
+                  <td><video src="./static/images/object/holopart/17.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/17.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/18.png"></td>
+                  <td><video src="./static/images/object/holopart/18.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/18.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/20.png"></td>
+                  <td><video src="./static/images/object/holopart/20.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/20.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/21.png"></td>
+                  <td><video src="./static/images/object/holopart/21.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/21.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/22.png"></td>
+                  <td><video src="./static/images/object/holopart/22.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/22.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/object/gt/23.png"></td>
+                  <td><video src="./static/images/object/holopart/23.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/object/ours/23.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="title is-4 has-text-centered">
+            B. Comparison with <a href="https://huanngzh.github.io/MIDI-Page/">MIDI</a>
+          </h3>
+          <div style="text-align:center">
+            <table style="width: 100%">
+              <tbody>
+                <tr class="result-row">
+                  <td><b>Input</b></td>
+                  <td><b>MIDI</b></td>
+                  <td><b>Ours</b></td>
+                </tr> 
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/00.png"></td>
+                  <td><video src="./static/images/scene/midi/00.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/scene/ours/00.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/01.png"></td>
+                  <td><video src="./static/images/scene/midi/01.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/scene/ours/01.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/02.png"></td>
+                  <td><video src="./static/images/scene/midi/02.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/scene/ours/02.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/03.png"></td>
+                  <td><video src="./static/images/scene/midi/03.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/scene/ours/03.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/04.png"></td>
+                  <td><video src="./static/images/scene/midi/04.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/scene/ours/04.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/05.png"></td>
+                  <td><video src="./static/images/scene/midi/05.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/scene/ours/05.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/06.png"></td>
+                  <td><video src="./static/images/scene/midi/06.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/scene/ours/06.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/07.png"></td>
+                  <td><video src="./static/images/scene/midi/07.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/scene/ours/07.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+                <tr class="result-row">
+                  <td><img src="./static/images/scene/gt/08.png"></td>
+                  <td><video src="./static/images/scene/midi/08.mp4" width="80%" autoplay loop muted></video></td>
+                  <td><video src="./static/images/scene/ours/08.mp4" width="80%" autoplay loop muted></video></td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section -1: Footer -->
+  <footer class="footer">
+    <div class="container">
+
+      <!-- Copyright -->
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p style="text-align: center">
+              Website template is borrowed from <a href="https://nerfies.github.io">Nerfies</a>.
+              Thanks for their effort.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+</body>
+
+</html>
