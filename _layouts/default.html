@@ -104,8 +104,7 @@
             <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
               <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
             </td>
-            {% endif %}
-            {% if post.video %}
+            {% elsif post.video %}
             <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
               <video src="{{post.video}}" style="width:auto; height:auto; max-width:100%;" autoplay loop muted></video>
             </td>
