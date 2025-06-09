@@ -10,7 +10,7 @@ venue_short:
 arxiv: https://arxiv.org/abs/2506.05573
 # note: 
 code: https://github.com/wgsxm/PartCrafter
-website: /projects/PartCrafter
+website: /projects/partcrafter
 video: https://www.youtube.com/watch?v=ZaZHbkkPtXY
 ---
 PartCrafter is a structured 3D generative model that jointly generates multiple parts and objects from a single RGB image in one shot. 
