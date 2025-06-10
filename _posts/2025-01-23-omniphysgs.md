@@ -11,5 +11,6 @@ arxiv: https://arxiv.org/abs/2501.18982
 # note: 
 code: https://github.com/wgsxm/omniphysgs
 website: /projects/omniphysgs
+github_badge: <iframe src="https://ghbtns.com/github-btn.html?user=wgsxm&repo=omniphysgs&type=star&count=true" frameborder="0" scrolling="0" width="170" height="20" style="vertical-align:middle;"></iframe>
 ---
 OmniPhysGS is a novel framework for general physics-based 3D dynamic scene synthesis, which can automatically and flexibly model various materials with domain-expert Constitutive Gaussians. 

@@ -9,7 +9,8 @@ authors: <a href="https://chenguolin.github.io/">Chenguo Lin</a>*, <author>Yuche
 venue: arXiv
 arxiv: https://arxiv.org/abs/2407.07580
 note: Under review by Transactions on Pattern Analysis and Machine Intelligence <strong>(T-PAMI)</strong>
-# code: https://github.com/leonidk/fmb-plus
-# website: https://arxiv.org/abs/2407.07580
+code: https://github.com/chenguolin/InstructScene
+website: https://chenguolin.github.io/projects/InstructScene/
+github_badge: <iframe src="https://ghbtns.com/github-btn.html?user=chenguolin&repo=InstructScene&type=star&count=true" frameborder="0" scrolling="0" width="170" height="20" style="vertical-align:middle;"></iframe>
 ---
 InstructLayout is a generative framework to both 2D E-commerce posters and 3D indoor scenes from instructions, and is composed of a semantic graph prior and a layout decoder.
