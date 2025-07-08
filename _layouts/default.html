@@ -55,7 +55,8 @@
                 <!-- <a class="news_style" target="_blank" href="mailto:linyuchen@stu.pku.edu.cn"> Email</a> &nbsp;/&nbsp; -->
                 <a class="news_style" href="https://github.com/wgsxm">GitHub</a> &nbsp;/&nbsp;
                 <a class="news_style" href="https://scholar.google.com/citations?user=fBAKIvgAAAAJ">Google Scholar</a> &nbsp;/&nbsp;
-                <a class="news_style" href="wechat.html"> WeChat </a>
+                <a class="news_style" href="https://x.com/kevin_yuchenlin">Twitter</a> &nbsp;/&nbsp;
+                <a class="news_style" href="wechat.html"> WeChat </a> 
               </p>
             </td>
             <td style="padding:2.5%;width:30%;max-width:40%;text-align: center;">
@@ -99,7 +100,7 @@
           {% for post in site.posts %}
           {% for cat in post.categories %}
           {% if cat == 'research' %}
-          <tr>
+          <tr bgcolor="{% if post.highlight %}#ffffd0{% else %}#ffffff{% endif %}">
             {% if post.image %}
             <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
               <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
