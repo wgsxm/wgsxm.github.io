@@ -158,13 +158,13 @@
                 </span>
 
                 <!-- Model Link -->
-                <!-- <span class="link-block">
-                  <a href=""
+                <span class="link-block">
+                  <a href="https://huggingface.co/wgsxm/PartCrafter"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon"><i class="fas fa-database"></i></span>
                     <span>Model</span>
                   </a>
-                </span> &nbsp; -->
+                </span> &nbsp;
 
                 <!-- Demo Link -->
                 <!-- <span class="link-block">
@@ -237,7 +237,7 @@
               We introduce <span class="morphing-text model-name"><b>PartCrafter</b></span>, <b>the first structured 3D generative model that jointly synthesizes multiple semantically meaningful and geometrically distinct 3D meshes from a single RGB image.</b> Unlike existing methods that either produce monolithic 3D shapes or follow two-stage pipelines, <i>i.e.</i>, first segmenting an image and then reconstructing each segment, <span class="morphing-text model-name"><b>PartCrafter</b></span> adopts a unified, compositional generation architecture that does not rely on pre-segmented inputs. Conditioned on a single image, it simultaneously denoises multiple 3D parts, enabling end-to-end part-aware generation of both individual objects and complex multi-object scenes. 
             </p>
             <p>
-              <span class="morphing-text model-name"><b>PartCrafter</b></span> builds upon a pretrained 3D mesh diffusion transformer (DiT) trained on whole objects, inheriting the pretrained weights, encoder, and decoder, and introduces two key innovations: <b>(1) A compositional latent space</b>, where each 3D part is represented by a set of disentangled latent tokens; <b>(2) A hierarchical attention mechanism</b> that enables structured information flow both within individual parts and across all parts, ensuring global coherence while preserving part-level detail during generation. To support part-level supervision, <b>we curate a new dataset by mining part-level annotations from large-scale 3D object datasets.</b> Experiments show that <span class="morphing-text model-name"><b>PartCrafter</b></span> outperforms existing approaches in generating decomposable 3D meshes, including parts that are not directly visible in input images, demonstrating the strength of part-aware generative priors for 3D understanding and synthesis. Code and training data will be released. 
+              <span class="morphing-text model-name"><b>PartCrafter</b></span> builds upon a pretrained 3D mesh diffusion transformer (DiT) trained on whole objects, inheriting the pretrained weights, encoder, and decoder, and introduces two key innovations: <b>(1) A compositional latent space</b>, where each 3D part is represented by a set of disentangled latent tokens; <b>(2) A hierarchical attention mechanism</b> that enables structured information flow both within individual parts and across all parts, ensuring global coherence while preserving part-level detail during generation. To support part-level supervision, <b>we curate a new dataset by mining part-level annotations from large-scale 3D object datasets.</b> Experiments show that <span class="morphing-text model-name"><b>PartCrafter</b></span> outperforms existing approaches in generating decomposable 3D meshes, including parts that are not directly visible in input images, demonstrating the strength of part-aware generative priors for 3D understanding and synthesis. Code and training data have been released <a href="https://github.com/wgsxm/PartCrafter">here</a>. 
             </p>
           </div>
         </div>
