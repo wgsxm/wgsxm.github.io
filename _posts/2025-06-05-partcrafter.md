@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "PartCrafter: Structured 3D Mesh Generation via Compositional Latent Diffusion Transformers"
-date:   2025-06-03 00:00:00 +00:00
+date:   2025-07-15 00:00:00 +00:00
 image: /images/partcrafter.png
 categories: research
 authors: <author>Yuchen Lin</author>*, <a href="https://chenguolin.github.io/">Chenguo Lin</a>*, <a href="https://paulpanwang.github.io/">Panwang Pan</a>, <a href="https://openreview.net/profile?id=~Honglei_Yan1">Honglei Yan</a>, <a href="https://openreview.net/profile?id=~Feng_Yiqiang1">Yiqiang Feng</a>, <a href="http://www.muyadong.com">Yadong Mu</a>, <a href="https://www.cs.cmu.edu/~katef/">Katerina Fragkiadaki</a>
