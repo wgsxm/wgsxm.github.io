@@ -448,6 +448,12 @@
         <div class="column is-full-width">
 
           <h2 class="title is-3 has-text-centered">📷&nbsp;&nbsp; Real-World Images &nbsp;&nbsp;📷</h2>
+          We evaluated our model using real-world object images from the <a href="https://github.com/facebookresearch/co3d.git">CO3D</a> dataset. Since our model was trained on rendered images from Objaverse, we observed that directly testing it on real-world images led to suboptimal performance due to the domain gap.
+          <br>
+          To address this issue, we <b>stylized the input images to resemble 3D renderings</b> before feeding them into the model, which significantly improved the results. We used <a href="https://www.doubao.com">Doubao</a>'s raw image transformation feature with the following prompt:
+          <i>"Preserve all details and perform image-to-image style transfer to convert the image into the style of a 3D rendering (Objaverse-style rendering)."</i>
+          
+          <br><br>
 
           <div style="text-align:center">
             <table style="width: 100%; table-layout: fixed;">
