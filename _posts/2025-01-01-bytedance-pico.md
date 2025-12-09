@@ -5,7 +5,7 @@ institution: ByteDance
 website: https://www.bytedance.com/en/
 secondary_institution: <a href="https://www.picoxr.com/global">PICO</a>
 date_start: 2025-01-17
-date_end: 
+date_end: 2025-09-01
 image: /images/logo_bytedance.png
 position: Research Intern
 research_advisor: 
