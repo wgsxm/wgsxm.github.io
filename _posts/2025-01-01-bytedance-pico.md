@@ -10,5 +10,6 @@ image: /images/logo_bytedance.png
 position: Research Intern
 research_advisor: 
 academic_advisor: 
+mentor: <a href="https://paulpanwang.github.io/">Panwang Pan</a>
 note: 
 ---
