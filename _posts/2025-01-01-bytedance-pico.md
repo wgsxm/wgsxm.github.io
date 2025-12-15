@@ -1,6 +1,6 @@
 ---
 layout: post
-categories: experience
+categories: draft
 institution: ByteDance
 website: https://www.bytedance.com/en/
 secondary_institution: <a href="https://www.picoxr.com/global">PICO</a>
