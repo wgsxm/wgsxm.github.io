@@ -12,7 +12,7 @@ code: https://github.com/paulpanwang/IDCrafter
 website: https://angericky.github.io/ID-Crafter/
 video: /videos/id_composer.mp4
 youtube: 
-github_badge: <iframe src="https://ghbtns.com/github-btn.html?user=paulpanwang&repo=IDCrafter&type=star&count=true" frameborder="0" scrolling="0" width="170" height="20" style="vertical-align:middle;"></iframe>
+github_badge: 
 highlight: false
 ---
-ID-Crafter is a multi-subject video synthesis model that generates subject-consistent videos with multiple references.
+ID-Composer is a multi-subject video synthesis model that generates subject-consistent videos with multiple references.
