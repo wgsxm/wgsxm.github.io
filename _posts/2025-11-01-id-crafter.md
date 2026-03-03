@@ -10,9 +10,9 @@ arxiv: https://arxiv.org/abs/2511.00511
 # note: 
 code: https://github.com/paulpanwang/IDCrafter
 website: https://angericky.github.io/ID-Crafter/
-video: /videos/id_composer.mp4
+video: /videos/id_crafter.mp4
 youtube: 
 github_badge: 
 highlight: false
 ---
-ID-Composer is a multi-subject video synthesis model that generates subject-consistent videos with multiple references.
+ID-Crafter is a multi-subject video synthesis model that generates subject-consistent videos with multiple references.
