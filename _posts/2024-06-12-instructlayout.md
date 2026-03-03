@@ -4,7 +4,7 @@ title:  "InstructLayout: Instruction-Driven 2D and 3D Layout Synthesis with Sema
   Graph Prior"
 date:   2025-01-01 22:21:59 +00:00
 image: /images/instructlayout.png
-categories: draft
+categories: research
 authors: <a href="https://chenguolin.github.io/">Chenguo Lin</a>*, <author>Yuchen Lin</author>*, <a href="https://paulpanwang.github.io/">Panwang Pan</a>, <a href="https://scholar.google.com/citations?user=oPV20eMAAAAJ">Xuanyang Zhang</a>, <a href="http://www.muyadong.com/">Yadong Mu</a>
 venue: Transactions on Pattern Analysis and Machine Intelligence
 venue_short: T-PAMI
