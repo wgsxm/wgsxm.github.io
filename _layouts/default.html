@@ -96,7 +96,15 @@
         <table style="margin-top:-20px;width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
           <tr>
             <td style="padding:2.5%;width:100%;vertical-align:middle">
-              <h2>Research</h2>
+              <h2>
+                Publications
+              </h2>
+              <p>
+                <b><a href="" id="select0" onclick="showPubs(0); return false;" style="text-decoration: underline; color: rgb(0, 0, 0);"
+                    >show selected</a></b> / 
+                <b><a href="" id="select1" onclick="showPubs(1); return false;">show all</a></b>
+              </p>
+              <!-- <h2>Research</h2> -->
               <p>
                 My research interests lie in <b>Embodied AI</b> and <b>Multimodal Learning</b>. 
               </p>
@@ -104,74 +112,146 @@
             </td>
           </tr>
         </table>
-        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
 
-          {% for post in site.posts %}
-          {% for cat in post.categories %}
-          {% if cat == 'research' %}
-          <tr bgcolor="{% if post.highlight %}#ffffd0{% else %}#ffffff{% endif %}">
-            {% if post.image %}
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
-            </td>
-            {% elsif post.video %}
-            <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
-              <video src="{{post.video}}" style="width:auto; height:auto; max-width:100%;" autoplay loop muted></video>
-            </td>
-            {% endif %}
-            <td style="padding:2.5%;width:75%;vertical-align:middle">
-              {% if post.website %}
-              <h3><a href="{{post.website}}">{{post.title}}</a></h3>
-              {% else %}
-                {% if post.arxiv %}
-                <h3><a href="{{post.arxiv}}">{{post.title}}</a></h3>
-                {% else %}
-                <h3><a href="{{post.pdf}}">{{post.title}}</a></h3>
-                {% endif %}
-              {% endif %}
-              <br>
-              {{post.authors}}
-              <br>
-              <em>{{post.venue}}</em>{% if post.venue_short %} (<b>{{post.venue_short}}</b>){% endif %}, {{ post.date | date: "%Y" }}
-              <br>
-              {% if post.note %}
-              {{ post.note }}<br>
-              {% endif %}
-              
-              {% if post.arxiv %}
-              <a href="{{post.arxiv}}">arxiv</a> /
-              {% endif %}
+        <div id="pubs0">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            {% for post in site.posts %}
+            {% for cat in post.categories %}
+            {% if cat == 'selected' %}
+            <tr bgcolor="{% if post.highlight %}#ffffd0{% else %}#ffffff{% endif %}">
               {% if post.image %}
-                {% if post.video %}
-                <a href="{{post.video}}">video</a> /
+              <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+              </td>
+              {% elsif post.video %}
+              <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                <video src="{{post.video}}" style="width:auto; height:auto; max-width:100%;" autoplay loop muted></video>
+              </td>
+              {% endif %}
+              <td style="padding:2.5%;width:75%;vertical-align:middle">
+                {% if post.website %}
+                <h3><a href="{{post.website}}">{{post.title}}</a></h3>
+                {% else %}
+                  {% if post.arxiv %}
+                  <h3><a href="{{post.arxiv}}">{{post.title}}</a></h3>
+                  {% else %}
+                  <h3><a href="{{post.pdf}}">{{post.title}}</a></h3>
+                  {% endif %}
                 {% endif %}
+                <br>
+                {{post.authors}}
+                <br>
+                <em>{{post.venue}}</em>{% if post.venue_short %} (<b>{{post.venue_short}}</b>){% endif %}, {{ post.date | date: "%Y" }}
+                <br>
+                {% if post.note %}
+                {{ post.note }}<br>
+                {% endif %}
+                
+                {% if post.arxiv %}
+                <a href="{{post.arxiv}}">arxiv</a> /
+                {% endif %}
+                {% if post.image %}
+                  {% if post.video %}
+                  <a href="{{post.video}}">video</a> /
+                  {% endif %}
+                {% endif %}
+                {% if post.code %}
+                <a href="{{post.code}}">code</a> /
+                {% endif %}
+                {% if post.poster %}
+                <a href="{{post.poster}}">poster</a> /
+                {% endif %}
+                {% if post.slides %}
+                <a href="{{post.slides}}">slides</a> /
+                {% endif %}
+                {% if post.website %}
+                <a href="{{post.website}}">website</a> /
+                {% endif %}
+                {% if post.youtube %}
+                <a href="{{post.youtube}}">youtube</a> /
+                {% endif %}
+                {% if post.github_badge %}
+                {{post.github_badge}}
+                {% endif %}
+                <p></p>
+                {{ post.excerpt }}
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+          </table>
+        </div>
+
+        <div id="pubs1" style="display:none;">
+          <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;">
+            {% for post in site.posts %}
+            {% for cat in post.categories %}
+            {% if cat == 'research' or cat == 'selected' %}
+            <tr bgcolor="{% if post.highlight %}#ffffd0{% else %}#ffffff{% endif %}">
+              {% if post.image %}
+              <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                <img src="{{post.image}}" alt="project image" style="width:auto; height:auto; max-width:100%;" />
+              </td>
+              {% elsif post.video %}
+              <td style="padding:2.5%;width:25%;vertical-align:middle;min-width:120px">
+                <video src="{{post.video}}" style="width:auto; height:auto; max-width:100%;" autoplay loop muted></video>
+              </td>
               {% endif %}
-              {% if post.code %}
-              <a href="{{post.code}}">code</a> /
-              {% endif %}
-              {% if post.poster %}
-              <a href="{{post.poster}}">poster</a> /
-              {% endif %}
-              {% if post.slides %}
-              <a href="{{post.slides}}">slides</a> /
-              {% endif %}
-              {% if post.website %}
-              <a href="{{post.website}}">website</a> /
-              {% endif %}
-              {% if post.youtube %}
-              <a href="{{post.youtube}}">youtube</a> /
-              {% endif %}
-              {% if post.github_badge %}
-              {{post.github_badge}}
-              {% endif %}
-              <p></p>
-              {{ post.excerpt }}
-            </td>
-          </tr>
-          {% endif %}
-          {% endfor %}
-          {% endfor %}
-        </table>
+              <td style="padding:2.5%;width:75%;vertical-align:middle">
+                {% if post.website %}
+                <h3><a href="{{post.website}}">{{post.title}}</a></h3>
+                {% else %}
+                  {% if post.arxiv %}
+                  <h3><a href="{{post.arxiv}}">{{post.title}}</a></h3>
+                  {% else %}
+                  <h3><a href="{{post.pdf}}">{{post.title}}</a></h3>
+                  {% endif %}
+                {% endif %}
+                <br>
+                {{post.authors}}
+                <br>
+                <em>{{post.venue}}</em>{% if post.venue_short %} (<b>{{post.venue_short}}</b>){% endif %}, {{ post.date | date: "%Y" }}
+                <br>
+                {% if post.note %}
+                {{ post.note }}<br>
+                {% endif %}
+                
+                {% if post.arxiv %}
+                <a href="{{post.arxiv}}">arxiv</a> /
+                {% endif %}
+                {% if post.image %}
+                  {% if post.video %}
+                  <a href="{{post.video}}">video</a> /
+                  {% endif %}
+                {% endif %}
+                {% if post.code %}
+                <a href="{{post.code}}">code</a> /
+                {% endif %}
+                {% if post.poster %}
+                <a href="{{post.poster}}">poster</a> /
+                {% endif %}
+                {% if post.slides %}
+                <a href="{{post.slides}}">slides</a> /
+                {% endif %}
+                {% if post.website %}
+                <a href="{{post.website}}">website</a> /
+                {% endif %}
+                {% if post.youtube %}
+                <a href="{{post.youtube}}">youtube</a> /
+                {% endif %}
+                {% if post.github_badge %}
+                {{post.github_badge}}
+                {% endif %}
+                <p></p>
+                {{ post.excerpt }}
+              </td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+          </table>
+        </div>
 
         <!-- Project -->
 
@@ -422,6 +502,28 @@
       </td>
     </tr>
   </table>
+
+  <script>
+    function showPubs(id) {
+      document.getElementById("pubs0").style.display = (id === 0) ? "block" : "none";
+      document.getElementById("pubs1").style.display = (id === 1) ? "block" : "none";
+
+      if (id === 0) {
+        document.getElementById("select0").style.textDecoration = "underline";
+        document.getElementById("select0").style.color = "black";
+
+        document.getElementById("select1").style.textDecoration = "none";
+        document.getElementById("select1").style.color = "";
+      } else {
+        document.getElementById("select1").style.textDecoration = "underline";
+        document.getElementById("select1").style.color = "black";
+
+        document.getElementById("select0").style.textDecoration = "none";
+        document.getElementById("select0").style.color = "";
+      }
+    }
+  </script>
+
 </body>
 
 </html>
